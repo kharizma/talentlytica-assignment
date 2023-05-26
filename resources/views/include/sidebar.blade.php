@@ -8,8 +8,8 @@
         </div>
         <ul class="sidebar-menu">
             <li class="menu-header">Menu</li>
-            <li class="{{ (request()->is('home*')) ? 'active' : '' }}"><a class="nav-link" href="#"><i class="fas fa-tv"></i> <span>Dashboard</span></a></li>
-            <li class="{{ (request()->is('users*')) ? 'active' : '' }}"><a class="nav-link" href="#"><i class="fas fa-users"></i> <span>Peserta</span></a></li>
+            <li class="{{ (request()->is('home')) ? 'active' : '' }}"><a class="nav-link" href="{{ route('home.index') }}"><i class="fas fa-tv"></i> <span>Home</span></a></li>
+            <li class="{{ (request()->is('home/participant*')) ? 'active' : '' }}"><a class="nav-link" href="{{ route('home.participant.index') }}"><i class="fas fa-users"></i> <span>Peserta</span></a></li>
             
             <div class="mt-3 mb-4 p-3 hide-sidebar-mini d-grid">
                 <div class="d-grid">
