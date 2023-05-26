@@ -40,7 +40,14 @@
                             <p class="text-center fw-bold mx-3 mb-0">Sign In</p>
                         </div>
 
-                        <form action="#" method="POST">
+                        @if($message = Session::get('error'))
+                            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                <strong>{{ $message }}</strong>
+                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                            </div>
+                        @endif
+
+                        <form action="{{ route('auth.login') }}" method="POST">
                             @csrf
                             <!-- Email input -->
                             <div class="form-floating mb-4">
@@ -53,9 +60,19 @@
                                 <input type="password" name="password" class="form-control form-control-lg" placeholder="Enter password" required/>
                                 <label>Password</label>
                             </div>
+
+                            <div class="d-flex justify-content-between align-items-center">
+                                <!-- Checkbox -->
+                                <div class="form-check mb-0">
+                                    <input class="form-check-input me-2" type="checkbox" value=""/>
+                                    <label class="form-check-label">
+                                        Ingat Saya
+                                    </label>
+                                </div>
+                            </div>
                 
                             <div class="text-center text-lg-start mt-4 pt-2 mb-5">
-                                <button type="button" class="btn btn-primary btn-lg" style="padding-left: 2.5rem; padding-right: 2.5rem;">Login</button>
+                                <button type="submit" class="btn btn-primary btn-lg" style="padding-left: 2.5rem; padding-right: 2.5rem;">Login</button>
                             </div>
                         </form>
                     </div>

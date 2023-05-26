@@ -17,6 +17,10 @@ Route::get('/', function () {
     return redirect()->route('auth.login');
 });
 
-Route::get('/login', function () {
-    return view('auth.login');
-})->middleware('guest')->name('auth.login');
+Route::get('/login', 'App\Http\Controllers\Auth\LoginController@index')->middleware('guest')->name('auth.login');
+Route::post('/login', 'App\Http\Controllers\Auth\LoginController@login')->name('auth.login');
+Route::get('/logout', 'App\Http\Controllers\Auth\LoginController@logout')->name('auth.logout');
+
+Route::prefix('home')->middleware('auth')->as('home.')->group(function() {
+    Route::get('/', 'App\Http\Controllers\Home\HomeController@index')->name('index');
+});
